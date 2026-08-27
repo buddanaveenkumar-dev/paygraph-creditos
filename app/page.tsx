@@ -48,7 +48,7 @@ export default function Home() {
     <main>
       <header className="topbar">
         <a href="#top" className="brand" aria-label="PayGraph CreditOS home"><span className="brand-mark"><GitBranch size={19} /></span><span>PayGraph <b>CreditOS</b></span></a>
-        <nav aria-label="Primary navigation"><a href="#platform">Platform</a><a href="#architecture">Architecture</a><a href="#vision">Vision</a><a href="#founder">Founder</a></nav>
+        <nav aria-label="Primary navigation"><a href="#platform">Platform</a><a href="#portfolio-intelligence">Portfolio</a><a href="#architecture">Architecture</a><a href="#vision">Vision</a><a href="#founder">Founder</a></nav>
         <span className="independent-badge"><Radio size={13} /> Independent product concept</span>
         <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14} /></a>
       </header>
@@ -143,10 +143,28 @@ export default function Home() {
             <div className="lineage-grid">
               <div className="lineage-source"><p className="panel-kicker">Reference connector</p><h2>Deel developer sandbox</h2><p>Contract, payment, balance and worker events are normalized before they reach the credit layer.</p><a href="https://developer.deel.com/api/sandbox" target="_blank" rel="noreferrer">View source documentation <ArrowRight /></a></div>
               <div className="lineage-flow"><div><Database /><span><b>Source objects</b><small>Contracts • payments • balances</small></span></div><ArrowRight /><div><Braces /><span><b>PayGraph schema</b><small>Vendor-neutral workforce model</small></span></div><ArrowRight /><div><ShieldCheck /><span><b>Decision record</b><small>Versioned • reproducible • auditable</small></span></div></div>
-              <div className="audit-sample"><div><span>Decision ID</span><code>dec_7F29A4</code></div><div><span>Policy version</span><code>PG-US-IC-1.3</code></div><div><span>Input snapshot</span><code>sha256:8e4a…92f1</code></div><div><span>Decision latency</span><code>184 ms</code></div><div><span>Webhook verified</span><code>HMAC-SHA256</code></div></div>
+              <div className="audit-sample"><div><span>Decision ID</span><code>{profile === "marcus" ? "dec_8C14D2" : "dec_7F29A4"}</code></div><div><span>Policy version</span><code>{decision.policy}</code></div><div><span>Input snapshot</span><code>sha256:8e4a…92f1</code></div><div><span>Decision latency</span><code>184 ms</code></div><div><span>Webhook verified</span><code>HMAC-SHA256</code></div></div>
             </div>
           </TabsContent>
         </Tabs>
+      </section>
+
+      <section className="portfolio-proof" id="portfolio-intelligence">
+        <div className="portfolio-proof-copy">
+          <p className="eyebrow"><Activity size={14} /> Portfolio intelligence • Live prototype</p>
+          <h2>Every workforce event rolls up into an exposure decision.</h2>
+          <p>This illustrative command centre turns worker-level changes into portfolio-level monitoring: exposure, risk migration, concentrations and the exact events requiring action.</p>
+          <span>Modeled on a synthetic 24-worker cohort</span>
+        </div>
+        <div className="portfolio-proof-panel">
+          <div className="portfolio-proof-head"><div><span>Monitored exposure</span><strong>$31,600</strong><small>24 workers • 3 countries • 4 employers</small></div><StatusPill tone="neutral"><Radio size={12}/> Event feeds current</StatusPill></div>
+          <div className="portfolio-proof-kpis"><div><span>Expected loss</span><b>2.61%</b><small>$824 modeled</small></div><div><span>Available commitments</span><b>$46.9K</b><small>Approved capacity</small></div><div><span>Alerts requiring review</span><b>4</b><small>3 income • 1 contract</small></div></div>
+          <div className="portfolio-proof-visuals">
+            <div className="proof-risk"><p>Exposure by risk band</p><div><span>Low</span><i><b style={{width:"63%"}}/></i><strong>63%</strong></div><div><span>Medium</span><i><b className="medium" style={{width:"25%"}}/></i><strong>25%</strong></div><div><span>Elevated</span><i><b className="elevated" style={{width:"12%"}}/></i><strong>12%</strong></div></div>
+            <div className="proof-trend"><p>Four-week exposure trend</p><svg viewBox="0 0 460 120" role="img" aria-label="Illustrative four-week monitored exposure trend"><path d="M0 98 C62 94 86 77 137 82 S220 58 270 63 S360 38 460 25"/><circle cx="460" cy="25" r="5"/></svg><div><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div></div>
+          </div>
+          <div className="portfolio-alert"><Zap size={17}/><div><b>Early-warning queue</b><span>Income volatility rose above 20% for 3 workers; one contract termination requires exposure review.</span></div><em>4 open</em></div>
+        </div>
       </section>
 
       <section className="architecture-section" id="architecture">
