@@ -35,6 +35,9 @@ function StatusPill({ tone, children }: { tone: "good" | "warn" | "neutral"; chi
 export default function Home() {
   const [scenario, setScenario] = useState<Scenario>("baseline");
   const [profile, setProfile] = useState<Profile>("ana");
+  const [demoKey, setDemoKey] = useState("");
+  const [sandboxState, setSandboxState] = useState<"idle" | "loading" | "connected" | "error">("idle");
+  const [sandboxDetail, setSandboxDetail] = useState("Public mode uses deterministic synthetic records.");
   const decision = useMemo(() => {
     if (profile === "marcus") return { income: 5100, limit: 0, available: 0, outstanding: 0, score: 61, risk: "Elevated", status: "Conditional", policy: "PG-US-IC-1.4" };
     if (scenario === "terminated") return { income: 8750, limit: 5400, available: 0, outstanding: 2100, score: 46, risk: "Elevated", status: "Frozen", policy: "PG-US-IC-1.3" };
@@ -43,12 +46,26 @@ export default function Home() {
   }, [scenario, profile]);
 
   const chooseProfile = (next: Profile) => { setProfile(next); setScenario("baseline"); };
+  const connectSandbox = async () => {
+    setSandboxState("loading");
+    try {
+      const response = await fetch("/api/deel/snapshot", { headers: { "x-demo-access-key": demoKey } });
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.error ?? "Connection failed");
+      setSandboxState("connected");
+      setSandboxDetail(`${body.contracts.length} contracts and ${body.payments.length} payments fetched • API ${body.apiVersion} • ${body.requestIds.length} request IDs captured`);
+      setDemoKey("");
+    } catch (error) {
+      setSandboxState("error");
+      setSandboxDetail(error instanceof Error ? error.message : "Connection failed");
+    }
+  };
 
   return (
     <main>
       <header className="topbar">
         <a href="#top" className="brand" aria-label="PayGraph CreditOS home"><span className="brand-mark"><GitBranch size={19} /></span><span>PayGraph <b>CreditOS</b></span></a>
-        <nav aria-label="Primary navigation"><a href="#platform">Platform</a><a href="#portfolio-intelligence">Portfolio</a><a href="#architecture">Architecture</a><a href="#vision">Vision</a><a href="#founder">Founder</a></nav>
+        <nav aria-label="Primary navigation"><a href="#platform">Platform</a><a href="#portfolio-intelligence">Portfolio</a><a href="/architecture">Architecture</a><a href="/integrations/deel">Deel integration</a><a href="#founder">Founder</a></nav>
         <span className="independent-badge"><Radio size={13} /> Independent product concept</span>
         <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14} /></a>
       </header>
@@ -69,7 +86,7 @@ export default function Home() {
         <Tabs defaultValue="decision" className="workspace" id="platform">
           <div className="workspace-nav">
             <div><span className="live-dot" /> Reference environment connected</div>
-            <TabsList variant="line" aria-label="Product views"><TabsTrigger value="decision">Decision record</TabsTrigger><TabsTrigger value="portfolio">Portfolio</TabsTrigger><TabsTrigger value="data">Data lineage</TabsTrigger></TabsList>
+            <TabsList variant="line" aria-label="Product views"><TabsTrigger value="decision">Decision record</TabsTrigger><TabsTrigger value="portfolio">Portfolio</TabsTrigger><TabsTrigger value="data">Data lineage</TabsTrigger><TabsTrigger value="integration">Live integration</TabsTrigger></TabsList>
           </div>
 
           <TabsContent value="decision" className="workspace-content">
@@ -144,6 +161,21 @@ export default function Home() {
               <div className="lineage-source"><p className="panel-kicker">Reference connector</p><h2>Deel developer sandbox</h2><p>Contract, payment, balance and worker events are normalized before they reach the credit layer.</p><a href="https://developer.deel.com/api/sandbox" target="_blank" rel="noreferrer">View source documentation <ArrowRight /></a></div>
               <div className="lineage-flow"><div><Database /><span><b>Source objects</b><small>Contracts • payments • balances</small></span></div><ArrowRight /><div><Braces /><span><b>PayGraph schema</b><small>Vendor-neutral workforce model</small></span></div><ArrowRight /><div><ShieldCheck /><span><b>Decision record</b><small>Versioned • reproducible • auditable</small></span></div></div>
               <div className="audit-sample"><div><span>Decision ID</span><code>{profile === "marcus" ? "dec_8C14D2" : "dec_7F29A4"}</code></div><div><span>Policy version</span><code>{decision.policy}</code></div><div><span>Input snapshot</span><code>sha256:8e4a…92f1</code></div><div><span>Decision latency</span><code>184 ms</code></div><div><span>Webhook verified</span><code>HMAC-SHA256</code></div></div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="integration" className="workspace-content">
+            <div className="integration-grid">
+              <section className="integration-console">
+                <div className="integration-title"><div><p className="panel-kicker">Private walkthrough mode</p><h2>Deel API Sandbox connector</h2></div><StatusPill tone={sandboxState === "connected" ? "good" : sandboxState === "error" ? "warn" : "neutral"}><Radio size={12}/>{sandboxState === "connected" ? "Connected" : sandboxState === "loading" ? "Connecting" : sandboxState === "error" ? "Action required" : "Locked"}</StatusPill></div>
+                <p>Live credentials remain on the server. Enter the private walkthrough key to fetch sandbox contracts and payments without exposing the Deel token to the browser or repository.</p>
+                <div className="integration-form"><label htmlFor="demo-key">Walkthrough access key</label><div><input id="demo-key" type="password" value={demoKey} onChange={(event) => setDemoKey(event.target.value)} placeholder="Enter private key" autoComplete="off"/><Button className="button-dark" disabled={!demoKey || sandboxState === "loading"} onClick={connectSandbox}>{sandboxState === "loading" ? "Connecting…" : "Connect sandbox"}</Button></div></div>
+                <div className={`integration-result state-${sandboxState}`}><Database size={17}/><span><b>{sandboxState === "connected" ? "Live snapshot verified" : sandboxState === "error" ? "Sandbox not connected" : "Synthetic safety mode"}</b>{sandboxDetail}</span></div>
+              </section>
+              <section className="integration-contract">
+                <p className="panel-kicker">Pinned integration contract</p>
+                <div><span>Environment</span><code>api-sandbox.demo.deel.com/rest</code></div><div><span>API version</span><code>2026-01-01</code></div><div><span>Read model</span><code>GET /contracts • GET /payments</code></div><div><span>Event model</span><code>payment.completed • contract.status.updated</code></div><div><span>Webhook trust</span><code>X-Deel-Signature • HMAC-SHA256</code></div><div><span>Fallback</span><code>Deterministic synthetic data</code></div>
+              </section>
             </div>
           </TabsContent>
         </Tabs>

@@ -35,6 +35,12 @@ npm start
 
 Import this repository into Vercel, keep the detected framework as **Next.js**, and deploy with the default build settings. No environment variables are required for the synthetic public demo.
 
+## Private Deel sandbox walkthrough
+
+The project includes a server-side reference connector for contracts and payments, pinned to Deel API version `2026-01-01`, plus a signed-webhook receiver. Live retrieval requires a private walkthrough key and server-only Vercel environment variables.
+
+See [`docs/DEEL_SANDBOX_DEMO.md`](docs/DEEL_SANDBOX_DEMO.md) for secure setup and the five-minute demo runbook. Never commit sandbox or production credentials.
+
 ## Current architecture
 
 The public prototype uses deterministic, rules-based decision logic so every outcome can be traced to its source signal. Production integrations, licensed-lender execution, jurisdictional policies, bureau/open-banking data, and model governance are roadmap capabilities—not claims about the current build.
