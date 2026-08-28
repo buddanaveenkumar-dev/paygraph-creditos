@@ -67,18 +67,17 @@ export default function Home() {
       <header className="topbar">
         <a href="#top" className="brand" aria-label="PayGraph CreditOS home"><span className="brand-mark"><GitBranch size={19} /></span><span>PayGraph <b>CreditOS</b></span></a>
         <nav aria-label="Primary navigation"><a href="#platform">Platform</a><a href="#portfolio-intelligence">Portfolio</a><a href="/architecture">Architecture</a><a href="/integrations/deel">Deel integration</a><a href="#founder">Founder</a></nav>
-        <span className="independent-badge"><Radio size={13} /> Independent product concept</span>
         <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14} /></a>
       </header>
 
       <section className="product-shell" id="top">
         <div className="product-intro">
           <div><p className="eyebrow"><Sparkles size={14} /> Payroll-native credit intelligence</p><h1>Turn workforce signals into explainable credit decisions.</h1></div>
-          <p>A vendor-neutral decisioning and portfolio layer for payroll and HR platforms—built against Deel sandbox workflows as the first reference integration.</p>
+          <p>Decisioning and portfolio layer for payroll and HR platforms built against Deel sandbox workflows as the first reference.</p>
         </div>
 
         <div className="proof-strip" aria-label="Illustrative platform metrics">
-          <p><span>Modeled on synthetic data</span> Demonstration metrics—not production claims</p>
+          <p><span>Modeled on synthetic data</span> Demonstration metrics</p>
           <div><strong>184 ms</strong><span>illustrative decision latency</span></div>
           <div><strong>100%</strong><span>decisions with reason codes</span></div>
           <div><strong>78%</strong><span>straight-through decisions</span></div>
@@ -168,7 +167,7 @@ export default function Home() {
           <TabsContent value="integration" className="workspace-content">
             <div className="integration-grid">
               <section className="integration-console">
-                <div className="integration-title"><div><p className="panel-kicker">Private walkthrough mode</p><h2>Deel API Sandbox connector</h2></div><StatusPill tone={sandboxState === "connected" ? "good" : sandboxState === "error" ? "warn" : "neutral"}><Radio size={12}/>{sandboxState === "connected" ? "Connected" : sandboxState === "loading" ? "Connecting" : sandboxState === "error" ? "Action required" : "Locked"}</StatusPill></div>
+                <div className="integration-title"><div><p className="panel-kicker">Walkthrough mode</p><h2>Deel API Sandbox connector</h2></div><StatusPill tone={sandboxState === "connected" ? "good" : sandboxState === "error" ? "warn" : "neutral"}><Radio size={12}/>{sandboxState === "connected" ? "Connected" : sandboxState === "loading" ? "Connecting" : sandboxState === "error" ? "Action required" : "Locked"}</StatusPill></div>
                 <p>Live credentials remain on the server. Enter the private walkthrough key to fetch sandbox contracts and payments without exposing the Deel token to the browser or repository.</p>
                 <div className="integration-form"><label htmlFor="demo-key">Walkthrough access key</label><div><input id="demo-key" type="password" value={demoKey} onChange={(event) => setDemoKey(event.target.value)} placeholder="Enter private key" autoComplete="off"/><Button className="button-dark" disabled={!demoKey || sandboxState === "loading"} onClick={connectSandbox}>{sandboxState === "loading" ? "Connecting…" : "Connect sandbox"}</Button></div></div>
                 <div className={`integration-result state-${sandboxState}`}><Database size={17}/><span><b>{sandboxState === "connected" ? "Live snapshot verified" : sandboxState === "error" ? "Sandbox not connected" : "Synthetic safety mode"}</b>{sandboxDetail}</span></div>

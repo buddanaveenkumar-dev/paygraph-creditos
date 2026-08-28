@@ -72,7 +72,7 @@ export default function DeelIntegrationPage() {
     <section className="economics-section">
       <div><p className="eyebrow"><CircleDollarSign size={14}/> Business model</p><h2>Aligned economics without putting loans on Deel’s balance sheet.</h2></div>
       <div className="economics-grid"><article><span>Deel</span><b>Distribution and verified workforce signals</b><p>Improved benefit differentiation, engagement and illustrative revenue participation.</p></article><article><span>PayGraph</span><b>Decisioning, monitoring and orchestration</b><p>Platform licensing and/or performance-linked infrastructure fees.</p></article><article><span>Licensed partners</span><b>Capital, compliance and servicing</b><p>Interest, interchange or merchant economics subject to product and jurisdiction.</p></article></div>
-      <div className="partner-categories"><Handshake/><span>Designed for licensed partner categories</span><b>Installment credit</b><b>Emergency liquidity</b><b>Relocation finance</b><b>Credit cards</b></div>
+      <div className="partner-categories"><Handshake/><b>Salary advances</b><b>Emergency liquidity</b><b>Relocation finance</b><b>Installment credit</b></div>
     </section>
   </main>;
 }
