@@ -17,7 +17,8 @@ export default function DeelIntegrationPage() {
       const body = await response.json();
       if (!response.ok) throw new Error(body.error ?? "Connection failed");
       setState("connected");
-      setDetail(`${body.contracts.length} contracts • ${body.payments.length} payments • API ${body.apiVersion} • request provenance captured`);
+      const paymentDetail = body.paymentSource === "payments" ? `${body.payments.length} payments` : body.paymentSource === "invoices" ? `${body.payments.length} invoices used as payment evidence` : "payment API restricted • synthetic signed-event fallback active";
+      setDetail(`${body.contracts.length} contracts • ${paymentDetail} • API ${body.apiVersion} • request provenance captured`);
       setKey("");
     } catch (error) {
       setState("error");

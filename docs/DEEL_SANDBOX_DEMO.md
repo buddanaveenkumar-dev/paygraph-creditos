@@ -30,4 +30,6 @@ Never put these values in GitHub, screenshots, browser code, or messages.
 
 Say: "A working reference connector to Deel's isolated API Sandbox with a deterministic public fallback."
 
+If the sandbox organization restricts direct payment or invoice history, the connector keeps live contract retrieval active, records the `403` request identifier, and uses the deterministic signed-payment-event simulator. This is an explicit permission boundary, not a production-data claim.
+
 Do not claim an official Deel integration, production customer data, or Deel endorsement.

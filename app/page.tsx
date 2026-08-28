@@ -53,7 +53,8 @@ export default function Home() {
       const body = await response.json();
       if (!response.ok) throw new Error(body.error ?? "Connection failed");
       setSandboxState("connected");
-      setSandboxDetail(`${body.contracts.length} contracts and ${body.payments.length} payments fetched • API ${body.apiVersion} • ${body.requestIds.length} request IDs captured`);
+      const paymentDetail = body.paymentSource === "payments" ? `${body.payments.length} payments` : body.paymentSource === "invoices" ? `${body.payments.length} invoices used as payment evidence` : "payment API restricted; synthetic event fallback active";
+      setSandboxDetail(`${body.contracts.length} contracts and ${paymentDetail} • API ${body.apiVersion} • ${body.requestIds.length} request IDs captured`);
       setDemoKey("");
     } catch (error) {
       setSandboxState("error");
