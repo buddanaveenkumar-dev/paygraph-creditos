@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, BadgeCheck, Braces, Database, GitBranch, LockKeyhole, Radio, ShieldCheck, Webhook } from "lucide-react";
+import { ArrowLeft, ArrowRight, BadgeCheck, Braces, CircleDollarSign, CreditCard, Database, GitBranch, Handshake, LockKeyhole, Radio, ShieldCheck, UserCheck, Webhook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function DeelIntegrationPage() {
@@ -39,6 +39,13 @@ export default function DeelIntegrationPage() {
       <div className="claims-card"><span>Claims boundary</span><b>Sandbox reference integration</b><p>Not an official Deel product, partnership or production-data connection.</p></div>
     </section>
 
+    <section className="why-deel">
+      <p>Why this belongs inside a workforce platform</p>
+      <h2>Deel can enable credit as a zero-balance-sheet-liability workforce benefit.</h2>
+      <h3>PayGraph and licensed lending partners carry credit risk, compliance and servicing—while Deel strengthens retention, expands employee value and participates in platform economics.</h3>
+      <div className="deel-value-grid"><article><UserCheck/><b>Differentiated benefit</b><span>Fast access to responsible credit using verified workforce signals.</span></article><article><ShieldCheck/><b>No credit exposure</b><span>No lending capital, loss provisioning or servicing obligation for Deel.</span></article><article><CircleDollarSign/><b>New revenue surface</b><span>Illustrative lender-funded revenue share or platform licensing.</span></article></div>
+    </section>
+
     <section className="deel-console">
       <div className="console-head"><div><p className="panel-kicker">Private walkthrough</p><h2>Live sandbox connection</h2></div><span className={`connector-state connector-${state}`}><Radio size={12}/>{state === "connected" ? "Connected" : state === "loading" ? "Connecting" : state === "error" ? "Action required" : "Locked"}</span></div>
       <div className="console-grid">
@@ -55,6 +62,17 @@ export default function DeelIntegrationPage() {
       <article><ShieldCheck/><span>03</span><h3>Decide</h3><p>Generate an eligibility, limit, risk band and reproducible reason codes.</p></article>
       <ArrowRight/>
       <article><Webhook/><span>04</span><h3>Monitor</h3><p>Propagate signed payment and contract events into exposure and early warnings.</p></article>
+    </section>
+
+    <section className="employee-journey">
+      <div className="journey-copy"><p className="eyebrow"><CreditCard size={14}/> Employee experience</p><h2>Apply in under a minute. Understand every decision.</h2><p>No document hunting in the illustrated flow: the worker consents to verified employment data, reviews a transparent offer and accepts through the licensed lender.</p></div>
+      <div className="journey-phone"><div className="phone-top"><span>PayGraph benefit</span><b>Workforce credit</b></div><div className="journey-progress"><i/><i/><i/></div><article><span>01</span><div><b>Confirm eligibility</b><small>Consent to contract and payment verification</small></div><BadgeCheck/></article><article><span>02</span><div><b>Review your offer</b><small>$5,000 line • reasons and repayment shown</small></div><BadgeCheck/></article><article><span>03</span><div><b>Accept securely</b><small>Final disclosures from the licensed lender</small></div><ArrowRight/></article><button>Continue securely</button><small>Illustrative experience • no production credit offered</small></div>
+    </section>
+
+    <section className="economics-section">
+      <div><p className="eyebrow"><CircleDollarSign size={14}/> Business model</p><h2>Aligned economics without putting loans on Deel’s balance sheet.</h2></div>
+      <div className="economics-grid"><article><span>Deel</span><b>Distribution and verified workforce signals</b><p>Improved benefit differentiation, engagement and illustrative revenue participation.</p></article><article><span>PayGraph</span><b>Decisioning, monitoring and orchestration</b><p>Platform licensing and/or performance-linked infrastructure fees.</p></article><article><span>Licensed partners</span><b>Capital, compliance and servicing</b><p>Interest, interchange or merchant economics subject to product and jurisdiction.</p></article></div>
+      <div className="partner-categories"><Handshake/><span>Designed for licensed partner categories</span><b>Installment credit</b><b>Emergency liquidity</b><b>Relocation finance</b><b>Credit cards</b></div>
     </section>
   </main>;
 }
