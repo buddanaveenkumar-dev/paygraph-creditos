@@ -6,12 +6,15 @@ PayGraph CreditOS demonstrates how verified payroll, contract, and payment signa
 
 ## What the demo shows
 
+- A two-demo strategy spanning Worker Credit OS and Employer Risk OS
 - A workforce credit profile derived from payroll-native signals
 - Explainable eligibility, risk-band, and credit-limit decisions
 - A verified-payment event that updates available credit
 - A contract-termination event that freezes the limit immediately
 - Portfolio exposure and risk distribution updated from the same event stream
 - Field-level data lineage and a roadmap for governance, collections, and lender routing
+- Commercial employer underwriting, payroll-funding limits, expected loss and concentration controls
+- Event-driven employer limit reduction and collections-watch routing
 
 All people, decisions, balances, and events in the public demo are synthetic. This prototype does not extend credit, make production lending decisions, or represent an official Deel product or partnership.
 

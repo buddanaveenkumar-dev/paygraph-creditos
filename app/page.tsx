@@ -66,7 +66,7 @@ export default function Home() {
     <main>
       <header className="topbar">
         <a href="#top" className="brand" aria-label="PayGraph CreditOS home"><span className="brand-mark"><GitBranch size={19} /></span><span>PayGraph <b>CreditOS</b></span></a>
-        <nav aria-label="Primary navigation"><a href="#platform">Platform</a><a href="#portfolio-intelligence">Portfolio</a><a href="/architecture">Architecture</a><a href="/integrations/deel">Deel integration</a><a href="#founder">Founder</a></nav>
+        <nav aria-label="Primary navigation"><a href="/demo">Decision demos</a><a href="#platform">Worker Credit OS</a><a href="/demo/employer">Employer Risk OS</a><a href="/architecture">Architecture</a><a href="/integrations/deel">Deel integration</a></nav>
         <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14} /></a>
       </header>
 
