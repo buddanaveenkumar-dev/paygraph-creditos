@@ -47,7 +47,14 @@ export default function EmployerRiskDemo() {
         </div>
 
         <Tabs defaultValue="underwriting" className="employer-tabs">
-          <TabsList variant="line"><TabsTrigger value="underwriting">Underwriting</TabsTrigger><TabsTrigger value="portfolio">Portfolio impact</TabsTrigger><TabsTrigger value="governance">Governance</TabsTrigger></TabsList>
+          <div className="employer-view-nav">
+            <span>Executive views</span>
+            <TabsList aria-label="Employer Risk OS views">
+              <TabsTrigger value="underwriting"><FileCheck2/> <span>Underwriting</span></TabsTrigger>
+              <TabsTrigger value="portfolio"><BarChart3/> <span>Portfolio impact</span></TabsTrigger>
+              <TabsTrigger value="governance"><ShieldCheck/> <span>Governance</span></TabsTrigger>
+            </TabsList>
+          </div>
           <TabsContent value="underwriting">
             <div className="employer-decision-grid">
               <section className="company-profile">
