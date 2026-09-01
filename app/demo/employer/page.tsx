@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { Activity, AlertTriangle, ArrowRight, BadgeCheck, Banknote, BarChart3, BrainCircuit, Building2, Check, ChevronRight, FileCheck2, Gauge, GitBranch, Globe2, Landmark, LockKeyhole, Network, Scale, ShieldCheck, TrendingDown, Users, WalletCards, Zap } from "lucide-react";
+import { Activity, AlertTriangle, ArrowRight, BadgeCheck, Banknote, BarChart3, Building2, Check, ChevronRight, FileCheck2, GitBranch, Globe2, Landmark, LockKeyhole, ShieldCheck, TrendingDown, Users, WalletCards, Zap } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type Scenario = "approval" | "growth" | "failed_funding";
@@ -47,7 +47,7 @@ export default function EmployerRiskDemo() {
         </div>
 
         <Tabs defaultValue="underwriting" className="employer-tabs">
-          <TabsList variant="line"><TabsTrigger value="underwriting">Underwriting</TabsTrigger><TabsTrigger value="portfolio">Portfolio impact</TabsTrigger><TabsTrigger value="governance">Governance</TabsTrigger><TabsTrigger value="production">AI & scale</TabsTrigger></TabsList>
+          <TabsList variant="line"><TabsTrigger value="underwriting">Underwriting</TabsTrigger><TabsTrigger value="portfolio">Portfolio impact</TabsTrigger><TabsTrigger value="governance">Governance</TabsTrigger></TabsList>
           <TabsContent value="underwriting">
             <div className="employer-decision-grid">
               <section className="company-profile">
@@ -92,20 +92,6 @@ export default function EmployerRiskDemo() {
               <section><p>Immutable decision record</p><h2>Every limit is reproducible.</h2><div><span>Decision ID</span><code>dec_b2b_91A72F</code></div><div><span>Policy</span><code>PG-B2B-US-2.1</code></div><div><span>Input snapshot</span><code>sha256:f61c…02ae</code></div><div><span>Decision timestamp</span><code>2026-08-28T09:41:04Z</code></div><div><span>Approval authority</span><code>Delegated matrix • L3</code></div></section>
               <section><p>Three lines of defense</p><h2>Controls scale with exposure.</h2><article><span>1</span><div><b>Business ownership</b><small>Origination quality, client context and covenant monitoring</small></div></article><article><span>2</span><div><b>Independent credit risk</b><small>Policy, limits, exceptions and portfolio appetite</small></div></article><article><span>3</span><div><b>Audit and model assurance</b><small>Reproducibility, drift testing and control evidence</small></div></article></section>
               <section className="committee-note"><ShieldCheck/><div><b>Human accountability is preserved</b><p>Automation prepares the recommendation. Material exceptions, overrides and concentration breaches remain within an explicit delegated-authority framework.</p></div></section>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="production">
-            <div className="production-readiness">
-              <div className="production-readiness-head"><div><p>Production readiness</p><h2>From decision demo to a globally governed risk service.</h2></div><span><Gauge size={14}/> Reference design</span></div>
-              <div className="readiness-score-grid">
-                <article><Network/><span>Graph intelligence</span><b>Entity + relationship features</b><p>Worker, employer, contract, payment and country relationships feed deterministic graph features; GNN challengers are used only where measurable lift justifies added complexity.</p></article>
-                <article><BrainCircuit/><span>Model strategy</span><b>Champion / challenger</b><p>Rules and conventional ML remain transparent baselines. Graph embeddings/GNNs compete on loss-adjusted lift, calibration, fairness and explanation quality.</p></article>
-                <article><Scale/><span>Compliance orchestration</span><b>Market-specific policy packs</b><p>US adverse-action and fair-lending controls, UK outcome/affordability controls and India regulated-entity boundaries are versioned independently.</p></article>
-                <article><Activity/><span>ModelOps</span><b>Drift → action</b><p>Feature shift, score drift, calibration, approval/loss movement and fairness deltas create governed alerts and challenger-review workflows.</p></article>
-              </div>
-              <div className="readiness-slo"><div><strong>&lt;200 ms</strong><span>p95 decision target</span></div><div><strong>10K+/sec</strong><span>horizontal scale design</span></div><div><strong>99.99%</strong><span>service availability target</span></div><div><strong>&lt;2 sec</strong><span>critical-event exposure update</span></div></div>
-              <div className="readiness-foot"><ShieldCheck/><div><b>Credibility boundary</b><p>These are production architecture objectives, not performance claims for this public prototype. The operating model makes SLOs, model governance and jurisdictional compliance explicit before scale.</p></div><Link href="/architecture">Open production architecture <ArrowRight size={14}/></Link></div>
             </div>
           </TabsContent>
         </Tabs>

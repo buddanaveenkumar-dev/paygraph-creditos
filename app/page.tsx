@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { Activity, ArrowRight, BadgeCheck, Ban, Braces, BriefcaseBusiness, Check, CircleDollarSign, Clock3, Database, ExternalLink, FileCheck2, GitBranch, LineChart, LockKeyhole, Radio, RefreshCw, ShieldCheck, Sparkles, TrendingDown, Users, WalletCards, Webhook, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
+import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type Scenario = "baseline" | "payment" | "terminated";
@@ -32,20 +34,62 @@ function StatusPill({ tone, children }: { tone: "good" | "warn" | "neutral"; chi
   return <span className={`status-pill status-${tone}`}>{children}</span>;
 }
 
+function JsonCode({ value }: { value: Record<string, unknown> }) {
+  return <pre className="json-code">{JSON.stringify(value, null, 2).split("\n").map((line, index) => {
+    const match = line.match(/^(\s*)("[^"]+")(\s*:\s*)(.*)$/);
+    return <span key={`${index}-${line}`}>{match ? <>{match[1]}<i>{match[2]}</i>{match[3]}<b>{match[4]}</b></> : line}{"\n"}</span>;
+  })}</pre>;
+}
+
 export default function Home() {
   const [scenario, setScenario] = useState<Scenario>("baseline");
   const [profile, setProfile] = useState<Profile>("ana");
   const [demoKey, setDemoKey] = useState("");
   const [sandboxState, setSandboxState] = useState<"idle" | "loading" | "connected" | "error">("idle");
   const [sandboxDetail, setSandboxDetail] = useState("Public mode uses deterministic synthetic records.");
+  const [income, setIncome] = useState(8400);
+  const [tenure, setTenure] = useState(26);
+  const [volatility, setVolatility] = useState(4);
+  const [activeContract, setActiveContract] = useState(true);
+  const [payloadView, setPayloadView] = useState<"incoming" | "outgoing">("incoming");
+  const [contractors, setContractors] = useState(500000);
+  const [averageLine, setAverageLine] = useState(3000);
+  const [utilizationRate, setUtilizationRate] = useState(40);
   const decision = useMemo(() => {
     if (profile === "marcus") return { income: 5100, limit: 0, available: 0, outstanding: 0, score: 61, risk: "Elevated", status: "Conditional", policy: "PG-US-IC-1.4" };
-    if (scenario === "terminated") return { income: 8750, limit: 5400, available: 0, outstanding: 2100, score: 46, risk: "Elevated", status: "Frozen", policy: "PG-US-IC-1.3" };
-    if (scenario === "payment") return { income: 8750, limit: 5400, available: 3300, outstanding: 2100, score: 91, risk: "Low", status: "Eligible", policy: "PG-US-IC-1.3" };
-    return { income: 8400, limit: 5000, available: 2900, outstanding: 2100, score: 88, risk: "Low", status: "Eligible", policy: "PG-US-IC-1.3" };
-  }, [scenario, profile]);
+    const calculatedScore = Math.max(20, Math.min(96, 38 + Math.min(tenure, 24) * 1.4 + Math.min(income, 12000) / 900 - volatility * .8 + (activeContract ? 18 : -25)));
+    const score = scenario === "terminated" || !activeContract ? Math.min(46, Math.round(calculatedScore)) : scenario === "payment" ? Math.min(96, Math.round(calculatedScore + 3)) : Math.round(calculatedScore);
+    const risk = score >= 80 ? "Low" : score >= 65 ? "Medium" : "Elevated";
+    const eligible = activeContract && tenure >= 6 && income >= 3000 && volatility <= 35;
+    const rawLimit = eligible ? Math.min(10000, Math.max(2000, Math.round((income * .6 * (1 - volatility / 130)) / 100) * 100)) : 0;
+    const limit = scenario === "payment" ? Math.min(10000, rawLimit + 400) : rawLimit;
+    if (scenario === "terminated" || !activeContract) return { income, limit, available: 0, outstanding: 2100, score, risk: "Elevated", status: "Frozen", policy: "PG-US-IC-1.4" };
+    if (!eligible) return { income, limit: 0, available: 0, outstanding: 0, score, risk, status: "Conditional", policy: "PG-US-IC-1.4" };
+    return { income: scenario === "payment" ? income + 350 : income, limit, available: Math.max(0, limit - 2100), outstanding: 2100, score, risk, status: "Eligible", policy: "PG-US-IC-1.4" };
+  }, [scenario, profile, income, tenure, volatility, activeContract]);
+
+  const incomingPayload = useMemo(() => scenario === "terminated" || !activeContract ? {
+    id: "evt_deel_01J8K4TQ", type: "contract.status.updated", api_version: "2026-01-01", created_at: "2026-09-01T11:03:44Z",
+    data: { contract_id: "ct_9f27a", worker_id: "wrk_ana_01", previous_status: "active", status: "terminated", effective_at: "2026-09-01T11:03:44Z" },
+    verification: { header: "X-Deel-Signature", algorithm: "HMAC-SHA256", verified: true }
+  } : {
+    id: scenario === "payment" ? "evt_deel_01J8K3PN" : "snapshot_deel_01J8K2ZZ", type: scenario === "payment" ? "payment.completed" : "worker.credit_profile.synced", api_version: "2026-01-01", created_at: "2026-09-01T10:12:18Z",
+    data: { contract_id: "ct_9f27a", worker_id: "wrk_ana_01", amount: scenario === "payment" ? 8750 : income, currency: "USD", contract_status: activeContract ? "active" : "terminated" },
+    verification: { header: "X-Deel-Signature", algorithm: "HMAC-SHA256", verified: true }
+  }, [scenario, income, activeContract]);
+  const outputPayload = useMemo(() => ({
+    decision_id: "dec_7F29A4", worker_id: "wrk_ana_01", policy: decision.policy, status: decision.status.toLowerCase(), risk_score: decision.score,
+    risk_band: decision.risk.toLowerCase(), approved_limit: decision.limit, available_limit: decision.available, outstanding_exposure: decision.outstanding,
+    reason_codes: decision.status === "Frozen" ? ["CONTRACT_INACTIVE", "UNUSED_LINE_FROZEN", "EXPOSURE_PRESERVED"] : decision.status === "Conditional" ? ["POLICY_THRESHOLD_FAILED", "REASSESSMENT_ALLOWED"] : ["INCOME_VERIFIED", "TENURE_PASSED", "AFFORDABILITY_PASSED"],
+    latency_ms: 184, evaluated_at: "2026-09-01T10:12:19Z"
+  }), [decision]);
+
+  const monthlyVolume = contractors * averageLine * (utilizationRate / 100);
+  const annualOriginations = monthlyVolume * 4;
+  const annualRevenue = annualOriginations * .015;
 
   const chooseProfile = (next: Profile) => { setProfile(next); setScenario("baseline"); };
+  const runScenario = (next: Scenario) => { setScenario(next); setPayloadView("incoming"); window.setTimeout(() => setPayloadView("outgoing"), 650); };
   const connectSandbox = async () => {
     setSandboxState("loading");
     try {
@@ -102,18 +146,18 @@ export default function Home() {
                 </div>
                 <div className="signal-list">
                   <div><span><CircleDollarSign /> Verified monthly income</span><b>{money.format(decision.income)}</b></div>
-                  <div><span><Clock3 /> Contract tenure</span><b>{profile === "ana" ? "26 months" : "4 months"}</b></div>
-                  <div><span><BriefcaseBusiness /> Active contracts</span><b>{profile === "marcus" ? "1" : scenario === "terminated" ? "1 of 2" : "2"}</b></div>
-                  <div><span><LineChart /> Income trend</span><b className={profile === "ana" ? "positive" : "negative"}>{profile === "ana" ? "Stable +4.2%" : "Declining −18.6%"}</b></div>
+                  <div><span><Clock3 /> Contract tenure</span><b>{profile === "ana" ? `${tenure} months` : "4 months"}</b></div>
+                  <div><span><BriefcaseBusiness /> Active contracts</span><b>{profile === "marcus" ? "1" : scenario === "terminated" || !activeContract ? "Inactive" : "2"}</b></div>
+                  <div><span><LineChart /> Income volatility</span><b className={profile === "ana" && volatility <= 20 ? "positive" : "negative"}>{profile === "ana" ? `${volatility}%` : "18.6%"}</b></div>
                   <div><span><Users /> Client concentration</span><b>{profile === "ana" ? "62%" : "84%"}</b></div>
                   <div><span><BadgeCheck /> Payment reliability</span><b>{profile === "ana" ? "98.4%" : "86.1%"}</b></div>
                 </div>
                 {profile === "ana" ? <div className="event-controls">
                   <p>Simulate a live workforce event</p>
                   <div>
-                    <Button onClick={() => setScenario("payment")} disabled={scenario !== "baseline"} className="button-dark"><CircleDollarSign /> Verify payroll payment</Button>
-                    <Button onClick={() => setScenario("terminated")} disabled={scenario === "terminated"} variant="outline" className="button-outline"><Webhook /> Fire termination webhook</Button>
-                    <Button onClick={() => setScenario("baseline")} variant="ghost" size="icon" aria-label="Reset demo"><RefreshCw /></Button>
+                    <Button onClick={() => runScenario("payment")} disabled={scenario !== "baseline"} className="button-dark"><CircleDollarSign /> Verify payroll payment</Button>
+                    <Button onClick={() => runScenario("terminated")} disabled={scenario === "terminated"} variant="outline" className="button-outline"><Webhook /> Fire termination webhook</Button>
+                    <Button onClick={() => runScenario("baseline")} variant="ghost" size="icon" aria-label="Reset demo"><RefreshCw /></Button>
                   </div>
                 </div> : <div className="conditional-note"><TrendingDown size={16} /><span><b>Manual evidence requested</b>Two additional payroll cycles or a secondary active contract could trigger reassessment.</span></div>}
               </section>
@@ -135,6 +179,21 @@ export default function Home() {
                 <div className="formula-row"><span>Policy revised 26 Aug 2026 • <button title="v1.4 added conditional-decision explanations">View change</button></span><code>min(income capacity, contract cap, product cap)</code></div>
               </section>
             </div>
+            {profile === "ana" && <section className="technical-proof-grid">
+              <div className="simulator-card">
+                <div className="simulator-head"><div><p className="panel-kicker">Interactive policy simulator</p><h3>Change the workforce signals</h3></div><StatusPill tone={decision.risk === "Low" ? "good" : "warn"}>{decision.risk} risk</StatusPill></div>
+                <div className="simulator-control"><label><span>Verified monthly income</span><b>{money.format(income)}</b></label><Slider min={2000} max={20000} step={250} value={[income]} onValueChange={(value) => { setIncome(value[0]); setScenario("baseline"); }}/><small>$2,000</small><small>$20,000</small></div>
+                <div className="simulator-control"><label><span>Contract tenure</span><b>{tenure} months</b></label><Slider min={1} max={48} step={1} value={[tenure]} onValueChange={(value) => { setTenure(value[0]); setScenario("baseline"); }}/><small>1 month</small><small>48 months</small></div>
+                <div className="simulator-control"><label><span>Income volatility</span><b>{volatility}%</b></label><Slider min={0} max={60} step={1} value={[volatility]} onValueChange={(value) => { setVolatility(value[0]); setScenario("baseline"); }}/><small>Stable</small><small>60%</small></div>
+                <div className="simulator-toggle"><div><span>Active contract status</span><small>Lifecycle status immediately controls availability</small></div><Switch checked={activeContract} onCheckedChange={(checked) => { setActiveContract(checked); setScenario(checked ? "baseline" : "terminated"); }}/></div>
+              </div>
+              <div className="payload-console" aria-live="polite">
+                <div className="console-chrome"><span/><span/><span/><b>Live decision exchange</b><em>{scenario === "baseline" ? "snapshot" : "event processed"}</em></div>
+                <div className="payload-tabs"><button className={payloadView === "incoming" ? "active" : ""} onClick={() => setPayloadView("incoming")}>Deel incoming</button><button className={payloadView === "outgoing" ? "active" : ""} onClick={() => setPayloadView("outgoing")}>PayGraph output</button><span>{payloadView === "incoming" ? "POST /webhooks/deel" : "POST /v1/decisions"}</span></div>
+                <JsonCode value={payloadView === "incoming" ? incomingPayload : outputPayload}/>
+                <div className="console-status"><span className="live-dot"/> HMAC verified <b>•</b> idempotency enforced <b>•</b> 184ms illustrative latency</div>
+              </div>
+            </section>}
             <section className="event-strip" aria-live="polite">
               <div className="event-title"><Activity size={17} /><span>Decision lifecycle</span></div>
               {(profile === "marcus" ? [{ label: "Profile synchronized", detail: "4 months of contract and payment history", time: "09:46:11" }, { label: "Conditional decision", detail: "Policy PG-US-IC-1.4 • Elevated risk", time: "09:46:12" }] : timeline[scenario]).map((event) => <div className="event-item" key={event.label}><span className={`event-node ${profile === "marcus" ? "event-warn" : ""}`} /><div><b>{event.label}</b><small>{event.detail}</small></div><time>{event.time}</time></div>)}
@@ -199,6 +258,17 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="roi-section" id="business-impact">
+        <div className="roi-copy"><p className="eyebrow"><CircleDollarSign size={14}/> Deel business impact • Illustrative model</p><h2>Turn financial wellbeing into platform revenue—without putting consumer credit on Deel’s balance sheet.</h2><p>Adjust the commercial assumptions. Licensed lending partners fund and service the credit; the modeled Deel revenue is a lender-paid origination share.</p><div className="roi-boundary"><ShieldCheck/><span><b>Partner-funded operating model</b><small>Credit risk, capital, licensing and servicing remain with regulated lending partners.</small></span></div></div>
+        <div className="roi-calculator">
+          <div className="roi-control"><label><span>Active contractors monitored</span><b>{contractors.toLocaleString("en-US")}</b></label><Slider min={100000} max={1000000} step={50000} value={[contractors]} onValueChange={(value) => setContractors(value[0])}/><small>100K</small><small>1M</small></div>
+          <div className="roi-control"><label><span>Average monthly credit line</span><b>{money.format(averageLine)}</b></label><Slider min={500} max={10000} step={500} value={[averageLine]} onValueChange={(value) => setAverageLine(value[0])}/><small>$500</small><small>$10K</small></div>
+          <div className="roi-control"><label><span>Average line utilization</span><b>{utilizationRate}%</b></label><Slider min={10} max={80} step={5} value={[utilizationRate]} onValueChange={(value) => setUtilizationRate(value[0])}/><small>10%</small><small>80%</small></div>
+          <div className="roi-results"><div><span>Monthly utilized portfolio</span><strong>{money.format(monthlyVolume)}</strong><small>Contractors × line × utilization</small></div><div><span>Annual originated volume</span><strong>{money.format(annualOriginations)}</strong><small>Assumes four portfolio turns per year</small></div><div className="roi-highlight"><span>Potential annual Deel revenue</span><strong>{money.format(annualRevenue)}</strong><small>Illustrative 1.5% lender-paid share</small></div><div className="roi-zero"><span>Deel balance-sheet credit risk</span><strong>$0</strong><small>Under the proposed partner-funded model</small></div></div>
+          <p className="roi-disclaimer">Scenario model only—not a forecast or current Deel economics. Excludes losses borne by lenders, operating costs, eligibility, geography and regulatory constraints.</p>
+        </div>
+      </section>
+
       <section className="architecture-section" id="architecture">
         <div className="section-copy"><p className="eyebrow"><GitBranch size={14} /> Platform architecture</p><h2>One intelligence layer. Any workforce platform. Any licensed capital partner.</h2><p>PayGraph does not lend. It provides the decisioning, monitoring and governance infrastructure between verified workforce data and regulated financial products.</p></div>
         <div className="architecture-map">
@@ -223,7 +293,7 @@ export default function Home() {
 
       <section className="walkthrough-cta"><div><p className="eyebrow"><Radio size={14}/> Continue the conversation</p><h2>See how payroll-native signals become governed credit decisions.</h2><p>Request a focused walkthrough of the decision architecture, portfolio controls and path to licensed-lender integration.</p></div><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight/></a></section>
 
-      <footer><div className="brand"><span className="brand-mark"><GitBranch size={17} /></span><span>PayGraph <b>CreditOS</b></span></div><p>Independent product concept by Naveen Budda. Not affiliated with or endorsed by Deel.</p><div><a href="https://developer.deel.com/api/sandbox" target="_blank" rel="noreferrer">Reference API</a><a href="#top">Back to top</a></div></footer>
+      <footer><div className="brand"><span className="brand-mark"><GitBranch size={17} /></span><span>PayGraph <b>CreditOS</b></span></div><p>Independent prototype by Naveen Budda. Not affiliated with or endorsed by Deel.</p><div><a href="https://developer.deel.com/api/sandbox" target="_blank" rel="noreferrer">Reference API</a><a href="#top">Back to top</a></div></footer>
     </main>
   );
 }

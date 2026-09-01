@@ -15,6 +15,10 @@ PayGraph CreditOS demonstrates how verified payroll, contract, and payment signa
 - Field-level data lineage and a roadmap for governance, collections, and lender routing
 - Commercial employer underwriting, payroll-funding limits, expected loss and concentration controls
 - Event-driven employer limit reduction and collections-watch routing
+- Live Deel webhook and PayGraph decision JSON exchange
+- Interactive worker risk simulator for income, tenure, volatility and contract status
+- Illustrative Deel platform-revenue calculator with explicit assumptions
+- Clickable ecosystem architecture with API, security and latency details
 
 All people, decisions, balances, and events in the public demo are synthetic. This prototype does not extend credit, make production lending decisions, or represent an official Deel product or partnership.
 
