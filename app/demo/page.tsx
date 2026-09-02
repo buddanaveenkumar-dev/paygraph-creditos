@@ -10,23 +10,23 @@ export default function DemoPage() {
         <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14}/></a>
       </header>
       <section className="demo-hub-hero">
-        <p className="eyebrow">Two businesses • one governed risk platform</p>
-        <h1>Choose a decision surface.</h1>
-        <p>PayGraph demonstrates both sides of a workforce platform’s credit strategy: creating responsible financial products for workers and controlling commercial exposure to employer clients.</p>
+        <p className="eyebrow">Two credit decisions • one control layer</p>
+        <h1>Choose a demo.</h1>
+        <p>See how the same infrastructure can assess worker credit and manage commercial exposure to employer clients.</p>
       </section>
       <section className="demo-choice-grid">
         <Link href="/#platform" className="demo-choice demo-choice-worker">
-          <span className="demo-number">01</span><Users size={28}/><p>New business</p><h2>Worker Credit OS</h2>
-          <span>Launch salary advances and partner-funded credit using verified employment, contract and payroll signals.</span>
-          <strong>Open worker decision demo <ArrowRight size={16}/></strong>
+          <span className="demo-number">01</span><Users size={28}/><p>Worker products</p><h2>Worker Credit OS</h2>
+          <span>Assess eligibility and limits from verified income, contract tenure and payment history.</span>
+          <strong>Open worker demo <ArrowRight size={16}/></strong>
         </Link>
         <Link href="/demo/employer" className="demo-choice demo-choice-employer">
-          <span className="demo-number">02</span><Building2 size={28}/><p>Core risk infrastructure</p><h2>Employer Risk OS</h2>
-          <span>Underwrite payroll-funding exposure, set dynamic limits, monitor early warnings and orchestrate collections.</span>
-          <strong>Open employer risk demo <ArrowRight size={16}/></strong>
+          <span className="demo-number">02</span><Building2 size={28}/><p>Commercial exposure</p><h2>Employer Risk OS</h2>
+          <span>Set payroll-funding limits, monitor deterioration and prioritize action before the next payroll run.</span>
+          <strong>Open employer demo <ArrowRight size={16}/></strong>
         </Link>
       </section>
-      <section className="demo-thesis"><b>The operating thesis</b><p>Growth and control should share one decision architecture: normalized workforce data, versioned policies, real-time events and portfolio accountability.</p></section>
+      <section className="demo-thesis"><b>Shared foundation</b><p>Both demos use normalized workforce data, versioned policies, signed events and an auditable decision record.</p></section>
     </main>
   );
 }

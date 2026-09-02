@@ -16,7 +16,7 @@ export default function ArchitecturePage() {
   const [selected, setSelected] = useState<(typeof nodes)[number] | null>(null);
   return <main className="architecture-page interactive-architecture">
     <header className="topbar"><Link href="/" className="brand"><span className="brand-mark"><GitBranch size={19}/></span><span>PayGraph <b>CreditOS</b></span></Link><nav><Link href="/"><ArrowLeft size={13}/> Product</Link><Link href="/demo">Demos</Link><Link href="/integrations/deel">Deel integration</Link></nav></header>
-    <section className="architecture-hero"><p className="eyebrow"><GitBranch size={14}/> Interactive ecosystem architecture</p><h1>Follow a decision from workforce signal to regulated execution.</h1><p>Select any node to inspect its API contract, security boundary, latency objective and operating responsibility.</p></section>
+    <section className="architecture-hero"><p className="eyebrow"><GitBranch size={14}/> System architecture</p><h1>See where data, decisions and regulated capital meet.</h1><p>Select a component to inspect its API surface, security boundary, performance target and owner.</p></section>
     <section className="architecture-pipeline" aria-label="Deel ecosystem data flow">
       {nodes.map((node, index) => { const Icon = node.icon; return <div className="pipeline-segment" key={node.id}><button onClick={() => setSelected(node)}><span>{String(index + 1).padStart(2,"0")} • {node.eyebrow}</span><Icon/><h2>{node.title}</h2><p>{node.summary}</p><strong>Inspect node <ArrowRight/></strong></button>{index < nodes.length - 1 && <div className="pipeline-arrow"><ArrowRight/></div>}</div>; })}
     </section>

@@ -35,14 +35,14 @@ export default function DeelIntegrationPage() {
     </header>
 
     <section className="deel-hero">
-      <div><p className="eyebrow"><BadgeCheck size={14}/> Deel API Sandbox reference connector</p><h1>From workforce events to governed credit decisions.</h1><p>A working, independently built integration pattern showing how Deel sandbox contracts, payments and signed events can feed explainable underwriting and portfolio monitoring.</p></div>
+      <div><p className="eyebrow"><BadgeCheck size={14}/> Deel sandbox connector</p><h1>Trace each decision back to its Deel source.</h1><p>The connector reads sandbox contracts, handles signed events and records the provenance behind every decision.</p></div>
       <div className="claims-card"><span>Claims boundary</span><b>Sandbox reference integration</b><p>Not an official Deel product, partnership or production-data connection.</p></div>
     </section>
 
     <section className="why-deel">
-      <p>Why this belongs inside a workforce platform</p>
-      <h2>Deel can enable credit as a zero-balance-sheet-liability workforce benefit.</h2>
-      <h3>PayGraph and licensed lending partners carry credit risk, compliance and servicing—while Deel strengthens retention, expands employee value and participates in platform economics.</h3>
+      <p>Business case for Deel</p>
+      <h2>Offer worker credit without becoming the lender.</h2>
+      <h3>Deel contributes permissioned workforce data and distribution. PayGraph makes and monitors decisions. Licensed partners provide capital and own regulated lending.</h3>
       <div className="deel-value-grid"><article><UserCheck/><b>Differentiated benefit</b><span>Fast access to responsible credit using verified workforce signals.</span></article><article><ShieldCheck/><b>No credit exposure</b><span>No lending capital, loss provisioning or servicing obligation for Deel.</span></article><article><CircleDollarSign/><b>New revenue surface</b><span>Illustrative lender-funded revenue share or platform licensing.</span></article></div>
     </section>
 
@@ -65,12 +65,12 @@ export default function DeelIntegrationPage() {
     </section>
 
     <section className="employee-journey">
-      <div className="journey-copy"><p className="eyebrow"><CreditCard size={14}/> Employee experience</p><h2>Apply in under a minute. Understand every decision.</h2><p>No document hunting in the illustrated flow: the worker consents to verified employment data, reviews a transparent offer and accepts through the licensed lender.</p></div>
+      <div className="journey-copy"><p className="eyebrow"><CreditCard size={14}/> Worker experience</p><h2>From consent to offer in three steps.</h2><p>The worker authorizes employment verification, reviews the offer and completes acceptance with the licensed lender.</p></div>
       <div className="journey-phone"><div className="phone-top"><span>PayGraph benefit</span><b>Workforce credit</b></div><div className="journey-progress"><i/><i/><i/></div><article><span>01</span><div><b>Confirm eligibility</b><small>Consent to contract and payment verification</small></div><BadgeCheck/></article><article><span>02</span><div><b>Review your offer</b><small>$5,000 line • reasons and repayment shown</small></div><BadgeCheck/></article><article><span>03</span><div><b>Accept securely</b><small>Final disclosures from the licensed lender</small></div><ArrowRight/></article><button>Continue securely</button><small>Illustrative experience • no production credit offered</small></div>
     </section>
 
     <section className="economics-section">
-      <div><p className="eyebrow"><CircleDollarSign size={14}/> Business model</p><h2>Aligned economics without putting loans on Deel’s balance sheet.</h2></div>
+      <div><p className="eyebrow"><CircleDollarSign size={14}/> Operating model</p><h2>Deel distributes. PayGraph decides. Licensed partners lend.</h2></div>
       <div className="economics-grid"><article><span>Deel</span><b>Distribution and verified workforce signals</b><p>Improved benefit differentiation, engagement and illustrative revenue participation.</p></article><article><span>PayGraph</span><b>Decisioning, monitoring and orchestration</b><p>Platform licensing and/or performance-linked infrastructure fees.</p></article><article><span>Licensed partners</span><b>Capital, compliance and servicing</b><p>Interest, interchange or merchant economics subject to product and jurisdiction.</p></article></div>
       <div className="partner-categories"><Handshake/><b>Salary advances</b><b>Emergency liquidity</b><b>Relocation finance</b><b>Installment credit</b></div>
     </section>

@@ -116,15 +116,15 @@ export default function Home() {
 
       <section className="product-shell" id="top">
         <div className="product-intro">
-          <div><p className="eyebrow"><Sparkles size={14} /> Payroll-native credit intelligence</p><h1>Turn workforce signals into explainable credit decisions.</h1></div>
-          <p>Decisioning and portfolio layer for payroll and HR platforms built against Deel sandbox workflows as the first reference.</p>
+          <div><p className="eyebrow"><Sparkles size={14} /> Credit infrastructure for workforce platforms</p><h1>Credit decisions built on verified work data.</h1></div>
+          <p>PayGraph turns payroll, contract and payment signals into clear decisions for workers and employer clients. Deel is the first reference connector.</p>
         </div>
 
         <div className="proof-strip" aria-label="Illustrative platform metrics">
-          <p><span>Modeled on synthetic data</span> Demonstration metrics</p>
-          <div><strong>184 ms</strong><span>illustrative decision latency</span></div>
-          <div><strong>100%</strong><span>decisions with reason codes</span></div>
-          <div><strong>78%</strong><span>straight-through decisions</span></div>
+          <p><span>Prototype metrics</span> Synthetic records</p>
+          <div><strong>184 ms</strong><span>decision time</span></div>
+          <div><strong>100%</strong><span>reason-code coverage</span></div>
+          <div><strong>78%</strong><span>automated decisions</span></div>
         </div>
 
         <Tabs defaultValue="decision" className="workspace" id="platform">
@@ -243,9 +243,9 @@ export default function Home() {
       <section className="portfolio-proof" id="portfolio-intelligence">
         <div className="portfolio-proof-copy">
           <p className="eyebrow"><Activity size={14} /> Portfolio intelligence • Live prototype</p>
-          <h2>Every workforce event rolls up into an exposure decision.</h2>
-          <p>This illustrative command centre turns worker-level changes into portfolio-level monitoring: exposure, risk migration, concentrations and the exact events requiring action.</p>
-          <span>Modeled on a synthetic 24-worker cohort</span>
+          <h2>See exposure change when work changes.</h2>
+          <p>Payments, income volatility and contract events update limits, expected loss and the review queue from the same decision record.</p>
+          <span>Synthetic cohort • 24 workers</span>
         </div>
         <div className="portfolio-proof-panel">
           <div className="portfolio-proof-head"><div><span>Monitored exposure</span><strong>$31,600</strong><small>24 workers • 3 countries • 4 employers</small></div><StatusPill tone="neutral"><Radio size={12}/> Event feeds current</StatusPill></div>
@@ -259,18 +259,18 @@ export default function Home() {
       </section>
 
       <section className="roi-section" id="business-impact">
-        <div className="roi-copy"><p className="eyebrow"><CircleDollarSign size={14}/> Deel business impact • Illustrative model</p><h2>Turn financial wellbeing into platform revenue—without putting consumer credit on Deel’s balance sheet.</h2><p>Adjust the commercial assumptions. Licensed lending partners fund and service the credit; the modeled Deel revenue is a lender-paid origination share.</p><div className="roi-boundary"><ShieldCheck/><span><b>Partner-funded operating model</b><small>Credit risk, capital, licensing and servicing remain with regulated lending partners.</small></span></div></div>
+        <div className="roi-copy"><p className="eyebrow"><CircleDollarSign size={14}/> Illustrative business case</p><h2>A new revenue line, funded by lending partners.</h2><p>Deel provides permissioned workforce data and distribution. Licensed partners provide capital and own the credit risk. Adjust the assumptions to test the opportunity.</p><div className="roi-boundary"><ShieldCheck/><span><b>Deel does not fund the loans</b><small>Capital, underwriting responsibility, licensing and servicing remain with regulated partners.</small></span></div></div>
         <div className="roi-calculator">
           <div className="roi-control"><label><span>Active contractors monitored</span><b>{contractors.toLocaleString("en-US")}</b></label><Slider min={100000} max={1000000} step={50000} value={[contractors]} onValueChange={(value) => setContractors(value[0])}/><small>100K</small><small>1M</small></div>
           <div className="roi-control"><label><span>Average monthly credit line</span><b>{money.format(averageLine)}</b></label><Slider min={500} max={10000} step={500} value={[averageLine]} onValueChange={(value) => setAverageLine(value[0])}/><small>$500</small><small>$10K</small></div>
           <div className="roi-control"><label><span>Average line utilization</span><b>{utilizationRate}%</b></label><Slider min={10} max={80} step={5} value={[utilizationRate]} onValueChange={(value) => setUtilizationRate(value[0])}/><small>10%</small><small>80%</small></div>
           <div className="roi-results"><div><span>Monthly utilized portfolio</span><strong>{money.format(monthlyVolume)}</strong><small>Contractors × line × utilization</small></div><div><span>Annual originated volume</span><strong>{money.format(annualOriginations)}</strong><small>Assumes four portfolio turns per year</small></div><div className="roi-highlight"><span>Potential annual Deel revenue</span><strong>{money.format(annualRevenue)}</strong><small>Illustrative 1.5% lender-paid share</small></div><div className="roi-zero"><span>Deel balance-sheet credit risk</span><strong>$0</strong><small>Under the proposed partner-funded model</small></div></div>
-          <p className="roi-disclaimer">Scenario model only—not a forecast or current Deel economics. Excludes losses borne by lenders, operating costs, eligibility, geography and regulatory constraints.</p>
+          <p className="roi-disclaimer">Scenario only; not a forecast of Deel revenue. The model excludes operating costs, lender losses, eligibility rates and market-specific restrictions.</p>
         </div>
       </section>
 
       <section className="architecture-section" id="architecture">
-        <div className="section-copy"><p className="eyebrow"><GitBranch size={14} /> Platform architecture</p><h2>One intelligence layer. Any workforce platform. Any licensed capital partner.</h2><p>PayGraph does not lend. It provides the decisioning, monitoring and governance infrastructure between verified workforce data and regulated financial products.</p></div>
+        <div className="section-copy"><p className="eyebrow"><GitBranch size={14} /> System architecture</p><h2>Connect workforce data to regulated credit.</h2><p>PayGraph runs the decision and monitoring layer. Licensed partners provide capital, disclosures and servicing.</p></div>
         <div className="architecture-map">
           <div className="arch-column"><span className="arch-label">Workforce data</span><article><Database /><div><b>Payroll & HR</b><small>Deel reference connector</small></div></article><article><Webhook /><div><b>Real-time events</b><small>Payments • amendments • termination</small></div></article></div>
           <div className="arch-arrow"><ArrowRight /></div>
@@ -282,8 +282,8 @@ export default function Home() {
       </section>
 
       <section className="vision-section" id="vision">
-        <div className="section-copy light-copy"><p className="eyebrow"><Sparkles size={14} /> Product vision</p><h2>From a working decision core to a global credit operating system.</h2><p>The MVP stays deliberately narrow. The architecture creates a credible path to the operating discipline around the models—not just another score.</p></div>
-        <div className="roadmap-grid"><article className="roadmap-live"><span>01 • Working now</span><h3>Decisioning core</h3><p>Payroll gateway, workforce profile, explainable decisions, dynamic limits and portfolio roll-up.</p></article><article><span>02 • Next</span><h3>Early warning & collections</h3><p>Recommended interventions based on income deterioration, contract events and repayment behaviour.</p></article><article><span>03 • Scale</span><h3>Global policy governance</h3><p>Country, lender and worker-class rules with approvals, versions, audit trails and adverse-action controls.</p></article><article><span>04 • Network</span><h3>Capital routing</h3><p>Match eligible workers to licensed partners by geography, risk appetite, price and available capital.</p></article></div>
+        <div className="section-copy light-copy"><p className="eyebrow"><Sparkles size={14} /> Product roadmap</p><h2>The controls around the decision matter as much as the score.</h2><p>The prototype starts with decisions and exposure. The next layers add intervention, market-specific policy and lender routing.</p></div>
+        <div className="roadmap-grid"><article className="roadmap-live"><span>01 • Live prototype</span><h3>Decision and limit engine</h3><p>Verified work profile, eligibility, limits, reasons and portfolio impact.</p></article><article><span>02 • Next</span><h3>Intervention and collections</h3><p>Actions triggered by income deterioration, contract changes and repayment behaviour.</p></article><article><span>03 • Multi-market</span><h3>Policy controls</h3><p>Country and lender rules, approvals, versions, audit evidence and customer notices.</p></article><article><span>04 • Partner network</span><h3>Capital routing</h3><p>Route eligible applicants by market, lender appetite, price and capital availability.</p></article></div>
       </section>
 
       <section className="founder-section" id="founder">
@@ -291,7 +291,7 @@ export default function Home() {
         <div className="founder-card"><span className="founder-initials">NB</span><div><h3>Naveen Budda</h3><p>Co-founder & CPTO, KarmaLife</p></div><ul><li>Built AI-native credit infrastructure supporting 2M+ gig and blue-collar workers</li><li>Led product, engineering and risk systems across employer and NBFC programs</li><li>20+ years across AI/ML, underwriting, portfolio analytics and regulated fintech</li></ul><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">View verified experience <ExternalLink size={13}/></a></div>
       </section>
 
-      <section className="walkthrough-cta"><div><p className="eyebrow"><Radio size={14}/> Continue the conversation</p><h2>See how payroll-native signals become governed credit decisions.</h2><p>Request a focused walkthrough of the decision architecture, portfolio controls and path to licensed-lender integration.</p></div><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight/></a></section>
+      <section className="walkthrough-cta"><div><p className="eyebrow"><Radio size={14}/> Product walkthrough</p><h2>Review the decisions, controls and integration flow.</h2><p>A focused walkthrough of the working prototype and its path to production.</p></div><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight/></a></section>
 
       <footer><div className="brand"><span className="brand-mark"><GitBranch size={17} /></span><span>PayGraph <b>CreditOS</b></span></div><p>Independent prototype by Naveen Budda. Not affiliated with or endorsed by Deel.</p><div><a href="https://developer.deel.com/api/sandbox" target="_blank" rel="noreferrer">Reference API</a><a href="#top">Back to top</a></div></footer>
     </main>
