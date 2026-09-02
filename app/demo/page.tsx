@@ -7,12 +7,12 @@ export default function DemoPage() {
       <header className="topbar">
         <Link href="/" className="brand"><span className="brand-mark"><GitBranch size={19}/></span><span>PayGraph <b>CreditOS</b></span></Link>
         <nav><Link href="/">Product</Link><Link href="/demo">Decision demos</Link><Link href="/architecture">Architecture</Link><Link href="/integrations/deel">Deel integration</Link></nav>
-        <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14}/></a>
+        <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Discuss the build path <ArrowRight size={14}/></a>
       </header>
       <section className="demo-hub-hero">
-        <p className="eyebrow">Two credit decisions • one control layer</p>
-        <h1>Choose a demo.</h1>
-        <p>See how the same infrastructure can assess worker credit and manage commercial exposure to employer clients.</p>
+        <p className="eyebrow">One platform • two credit businesses</p>
+        <h1>Two decisions. One operating system.</h1>
+        <p>One decision creates a worker-credit business. The other protects payroll exposure to employer clients. Both run on the same governed data and control layer.</p>
       </section>
       <section className="demo-choice-grid">
         <Link href="/#platform" className="demo-choice demo-choice-worker">
@@ -26,7 +26,7 @@ export default function DemoPage() {
           <strong>Open employer demo <ArrowRight size={16}/></strong>
         </Link>
       </section>
-      <section className="demo-thesis"><b>Shared foundation</b><p>Both demos use normalized workforce data, versioned policies, signed events and an auditable decision record.</p></section>
+      <section className="demo-thesis"><b>What this proves</b><p>PayGraph is not a single product mockup. It is a reusable credit operating layer spanning origination, commercial underwriting, portfolio monitoring and governance.</p></section>
     </main>
   );
 }

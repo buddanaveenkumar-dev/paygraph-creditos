@@ -30,26 +30,25 @@ export default function DeelIntegrationPage() {
     <header className="topbar">
       <Link href="/" className="brand"><span className="brand-mark"><GitBranch size={19}/></span><span>PayGraph <b>CreditOS</b></span></Link>
       <nav><Link href="/"><ArrowLeft size={13}/> Product</Link><Link href="/demo">Decision demo</Link><Link href="/architecture">Architecture</Link></nav>
-      <span className="independent-badge"><Radio size={13}/> Independent reference integration</span>
-      <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14}/></a>
+      <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Discuss the build path <ArrowRight size={14}/></a>
     </header>
 
     <section className="deel-hero">
-      <div><p className="eyebrow"><BadgeCheck size={14}/> Deel sandbox connector</p><h1>Trace each decision back to its Deel source.</h1><p>The connector reads sandbox contracts, handles signed events and records the provenance behind every decision.</p></div>
+      <div><p className="eyebrow"><BadgeCheck size={14}/> Deel sandbox connector</p><h1>Deel already has the data and distribution. PayGraph adds the credit operating layer.</h1><p>The reference connector reads sandbox contracts, handles signed events and records the provenance behind every decision.</p></div>
       <div className="claims-card"><span>Claims boundary</span><b>Sandbox reference integration</b><p>Not an official Deel product, partnership or production-data connection.</p></div>
     </section>
 
     <section className="why-deel">
       <p>Business case for Deel</p>
-      <h2>Offer worker credit without becoming the lender.</h2>
-      <h3>Deel contributes permissioned workforce data and distribution. PayGraph makes and monitors decisions. Licensed partners provide capital and own regulated lending.</h3>
+      <h2>Launch a differentiated benefit without becoming the lender.</h2>
+      <h3>Deel enables distribution and permissioned workforce signals. PayGraph and licensed partners carry decisioning, credit risk, compliance and servicing under the proposed model.</h3>
       <div className="deel-value-grid"><article><UserCheck/><b>Differentiated benefit</b><span>Fast access to responsible credit using verified workforce signals.</span></article><article><ShieldCheck/><b>No credit exposure</b><span>No lending capital, loss provisioning or servicing obligation for Deel.</span></article><article><CircleDollarSign/><b>New revenue surface</b><span>Illustrative lender-funded revenue share or platform licensing.</span></article></div>
     </section>
 
     <section className="deel-console">
-      <div className="console-head"><div><p className="panel-kicker">Private walkthrough</p><h2>Live sandbox connection</h2></div><span className={`connector-state connector-${state}`}><Radio size={12}/>{state === "connected" ? "Connected" : state === "loading" ? "Connecting" : state === "error" ? "Action required" : "Locked"}</span></div>
+      <div className="console-head"><div><p className="panel-kicker">Walkthrough mode</p><h2>Live sandbox connection</h2></div><span className={`connector-state connector-${state}`}><Radio size={12}/>{state === "connected" ? "Connected" : state === "loading" ? "Connecting" : state === "error" ? "Action required" : "Locked"}</span></div>
       <div className="console-grid">
-        <div className="secure-connect"><LockKeyhole/><h3>Server-side credential boundary</h3><p>The Deel token never reaches the browser or GitHub. A separate walkthrough key authorizes a limited, read-only snapshot.</p><label htmlFor="walkthrough-key">Private walkthrough key</label><div><input id="walkthrough-key" type="password" value={key} onChange={event => setKey(event.target.value)} placeholder="Enter access key" autoComplete="off"/><Button className="button-dark" disabled={!key || state === "loading"} onClick={connect}>{state === "loading" ? "Connecting…" : "Connect sandbox"}</Button></div><aside className={`connect-result result-${state}`}><Database size={16}/><span><b>{state === "connected" ? "Snapshot verified" : state === "error" ? "Connection not completed" : "Synthetic safety mode"}</b>{detail}</span></aside></div>
+        <div className="secure-connect"><LockKeyhole/><h3>Server-side credential boundary</h3><p>The Deel token never reaches the browser or GitHub. A separate access key authorizes a limited, read-only snapshot.</p><label htmlFor="walkthrough-key">Walkthrough access key</label><div><input id="walkthrough-key" type="password" value={key} onChange={event => setKey(event.target.value)} placeholder="Enter access key" autoComplete="off"/><Button className="button-dark" disabled={!key || state === "loading"} onClick={connect}>{state === "loading" ? "Connecting…" : "Connect sandbox"}</Button></div><aside className={`connect-result result-${state}`}><Database size={16}/><span><b>{state === "connected" ? "Snapshot verified" : state === "error" ? "Connection not completed" : "Synthetic safety mode"}</b>{detail}</span></aside></div>
         <div className="api-contract"><p className="panel-kicker">Pinned API contract</p><div><span>Environment</span><code>api-sandbox.demo.deel.com/rest</code></div><div><span>Version</span><code>2026-01-01</code></div><div><span>Read model</span><code>GET /contracts — Live</code><code>GET /payments — Permission-dependent</code><code>Signed payment simulation — Active fallback</code></div><div><span>Events</span><code>payment.completed</code><code>contract.status.updated</code></div><div><span>Verification</span><code>X-Deel-Signature</code><code>HMAC-SHA256</code></div></div>
       </div>
     </section>
@@ -74,5 +73,6 @@ export default function DeelIntegrationPage() {
       <div className="economics-grid"><article><span>Deel</span><b>Distribution and verified workforce signals</b><p>Improved benefit differentiation, engagement and illustrative revenue participation.</p></article><article><span>PayGraph</span><b>Decisioning, monitoring and orchestration</b><p>Platform licensing and/or performance-linked infrastructure fees.</p></article><article><span>Licensed partners</span><b>Capital, compliance and servicing</b><p>Interest, interchange or merchant economics subject to product and jurisdiction.</p></article></div>
       <div className="partner-categories"><Handshake/><b>Salary advances</b><b>Emergency liquidity</b><b>Relocation finance</b><b>Installment credit</b></div>
     </section>
+    <section className="integration-close"><div><p className="eyebrow">What is already de-risked</p><h2>The business case and the connector can be reviewed in the same meeting.</h2><p>Leadership can inspect the source boundary, decision logic, portfolio response, partner model and controlled-launch sequence without starting from a blank page.</p></div><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Discuss the build path <ArrowRight/></a></section>
   </main>;
 }

@@ -1,8 +1,8 @@
 # PayGraph CreditOS
 
-Payroll-native credit intelligence and decisioning for workforce platforms.
+Credit decisioning, employer exposure controls and portfolio intelligence for workforce platforms.
 
-PayGraph CreditOS demonstrates how verified payroll, contract, and payment signals can support responsible, explainable credit decisions for employees and contractors. Deel is the first reference integration; the normalized model is designed to support other payroll and HR data sources.
+PayGraph CreditOS demonstrates how verified payroll, contract and payment signals can support governed worker-credit decisions and commercial exposure management. The product is vendor-neutral; Deel is the first documented sandbox reference connector.
 
 ## What the demo shows
 

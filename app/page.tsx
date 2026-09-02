@@ -111,13 +111,13 @@ export default function Home() {
       <header className="topbar">
         <a href="#top" className="brand" aria-label="PayGraph CreditOS home"><span className="brand-mark"><GitBranch size={19} /></span><span>PayGraph <b>CreditOS</b></span></a>
         <nav aria-label="Primary navigation"><a href="/demo">Decision demos</a><a href="#platform">Worker Credit OS</a><a href="/demo/employer">Employer Risk OS</a><a href="/architecture">Architecture</a><a href="/integrations/deel">Deel integration</a></nav>
-        <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14} /></a>
+        <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Discuss the build path <ArrowRight size={14} /></a>
       </header>
 
       <section className="product-shell" id="top">
         <div className="product-intro">
           <div><p className="eyebrow"><Sparkles size={14} /> Credit infrastructure for workforce platforms</p><h1>Credit decisions built on verified work data.</h1></div>
-          <p>PayGraph turns payroll, contract and payment signals into clear decisions for workers and employer clients. Deel is the first reference connector.</p>
+          <p>PayGraph turns payroll, contract and payment signals into governed worker-credit decisions, employer exposure controls and portfolio intelligence.</p>
         </div>
 
         <div className="proof-strip" aria-label="Illustrative platform metrics">
@@ -269,6 +269,12 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="strategic-window">
+        <div className="strategic-window-copy"><p className="eyebrow"><Zap size={14}/> Strategic window</p><h2>Workforce platforms already own the signal. The credit layer is the next decision.</h2><p>Verified contracts, payroll and payment history create an advantage traditional lenders cannot reproduce at application time. PayGraph turns that data advantage into a controlled business.</p></div>
+        <div className="strategic-evidence"><article><span>01</span><b>Proprietary signal</b><p>Permissioned workforce data supports faster eligibility, clearer limits and earlier risk detection.</p></article><article><span>02</span><b>Adjacent revenue</b><p>Partner-funded products can deepen worker value without placing consumer credit on the platform balance sheet.</p></article><article><span>03</span><b>Execution lead</b><p>The decision core, reference connector, portfolio view and operating boundaries are already demonstrated.</p></article></div>
+        <div className="strategic-choice"><span>Leadership decision</span><b>Build from zero, partner with the platform, or bring the capability in-house.</b><p>The working system makes the technical, commercial and operating trade-offs reviewable now.</p></div>
+      </section>
+
       <section className="architecture-section" id="architecture">
         <div className="section-copy"><p className="eyebrow"><GitBranch size={14} /> System architecture</p><h2>Connect workforce data to regulated credit.</h2><p>PayGraph runs the decision and monitoring layer. Licensed partners provide capital, disclosures and servicing.</p></div>
         <div className="architecture-map">
@@ -282,16 +288,16 @@ export default function Home() {
       </section>
 
       <section className="vision-section" id="vision">
-        <div className="section-copy light-copy"><p className="eyebrow"><Sparkles size={14} /> Product roadmap</p><h2>The controls around the decision matter as much as the score.</h2><p>The prototype starts with decisions and exposure. The next layers add intervention, market-specific policy and lender routing.</p></div>
-        <div className="roadmap-grid"><article className="roadmap-live"><span>01 • Live prototype</span><h3>Decision and limit engine</h3><p>Verified work profile, eligibility, limits, reasons and portfolio impact.</p></article><article><span>02 • Next</span><h3>Intervention and collections</h3><p>Actions triggered by income deterioration, contract changes and repayment behaviour.</p></article><article><span>03 • Multi-market</span><h3>Policy controls</h3><p>Country and lender rules, approvals, versions, audit evidence and customer notices.</p></article><article><span>04 • Partner network</span><h3>Capital routing</h3><p>Route eligible applicants by market, lender appetite, price and capital availability.</p></article></div>
+        <div className="section-copy light-copy"><p className="eyebrow"><Sparkles size={14} /> Controlled launch path</p><h2>Move from working proof to pilot in 90 days.</h2><p>The sequence validates data and policy first, then introduces capital and customers inside explicit risk boundaries.</p></div>
+        <div className="roadmap-grid"><article className="roadmap-live"><span>Now • Working proof</span><h3>Decision core</h3><p>Worker and employer decisions, reason codes, events, governance and portfolio impact.</p></article><article><span>Days 1–30</span><h3>Policy and data validation</h3><p>Confirm source coverage, consent, eligibility rules, jurisdiction and risk appetite.</p></article><article><span>Days 31–60</span><h3>Partner and control readiness</h3><p>Complete lender routing, disclosures, servicing boundaries and operational playbooks.</p></article><article><span>Days 61–90</span><h3>Controlled pilot</h3><p>Launch a bounded cohort with approval, exposure, loss and customer-outcome reporting.</p></article></div>
       </section>
 
       <section className="founder-section" id="founder">
-        <div><p className="eyebrow"><BadgeCheck size={14} /> Founder thesis</p><blockquote>“Payroll is not just a payment rail. It is a real-time risk signal that can make credit fairer, safer and more explainable.”</blockquote></div>
+        <div><p className="eyebrow"><BadgeCheck size={14} /> Operator evidence</p><blockquote>“I built PayGraph to show how workforce data can become a governed credit business—not just another payroll feature.”</blockquote></div>
         <div className="founder-card"><span className="founder-initials">NB</span><div><h3>Naveen Budda</h3><p>Co-founder & CPTO, KarmaLife</p></div><ul><li>Built AI-native credit infrastructure supporting 2M+ gig and blue-collar workers</li><li>Led product, engineering and risk systems across employer and NBFC programs</li><li>20+ years across AI/ML, underwriting, portfolio analytics and regulated fintech</li></ul><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">View verified experience <ExternalLink size={13}/></a></div>
       </section>
 
-      <section className="walkthrough-cta"><div><p className="eyebrow"><Radio size={14}/> Product walkthrough</p><h2>Review the decisions, controls and integration flow.</h2><p>A focused walkthrough of the working prototype and its path to production.</p></div><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight/></a></section>
+      <section className="walkthrough-cta"><div><p className="eyebrow"><Radio size={14}/> Build decision</p><h2>Decide whether to build, partner or bring the capability in-house.</h2><p>The prototype is ready for a technical, risk and commercial review.</p></div><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Discuss the build path <ArrowRight/></a></section>
 
       <footer><div className="brand"><span className="brand-mark"><GitBranch size={17} /></span><span>PayGraph <b>CreditOS</b></span></div><p>Independent prototype by Naveen Budda. Not affiliated with or endorsed by Deel.</p><div><a href="https://developer.deel.com/api/sandbox" target="_blank" rel="noreferrer">Reference API</a><a href="#top">Back to top</a></div></footer>
     </main>

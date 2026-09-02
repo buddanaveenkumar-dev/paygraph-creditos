@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "PayGraph CreditOS",
-  description: "Worker financial-products decisioning and employer commercial-risk infrastructure for workforce platforms.",
+  description: "PayGraph turns verified workforce data into worker-credit decisions, employer exposure controls and portfolio intelligence.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 

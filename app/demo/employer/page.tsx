@@ -28,11 +28,11 @@ export default function EmployerRiskDemo() {
       <header className="topbar employer-topbar">
         <Link href="/" className="brand"><span className="brand-mark"><GitBranch size={19}/></span><span>PayGraph <b>CreditOS</b></span></Link>
         <nav><Link href="/">Product</Link><Link href="/demo">Decision demos</Link><Link href="/#platform">Worker Credit OS</Link><Link href="/architecture">Architecture</Link></nav>
-        <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough <ArrowRight size={14}/></a>
+        <a className="header-cta" href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Discuss the build path <ArrowRight size={14}/></a>
       </header>
 
       <section className="employer-hero">
-        <div><p className="eyebrow"><Building2 size={14}/> Employer Risk OS</p><h1>Set and monitor payroll-funding limits.</h1><p>Assess employer clients, size exposure and respond to funding deterioration before the next payroll run.</p></div>
+        <div><p className="eyebrow"><Building2 size={14}/> Employer Risk OS</p><h1>Underwrite employer exposure before payroll is at risk.</h1><p>Set funding limits, monitor deterioration and route intervention from the same commercial-risk record.</p></div>
         <div className="employer-hero-thesis"><span>Risk mandate</span><b>Set appetite. Monitor exposure. Act on deterioration.</b><small>Synthetic employer data and illustrative decisions.</small></div>
       </section>
 
@@ -104,9 +104,9 @@ export default function EmployerRiskDemo() {
         </Tabs>
       </section>
 
-      <section className="employer-operating-model"><div><p className="eyebrow">Risk operating model</p><h2>From policy to recovery, one accountable system.</h2></div><div className="operating-pillars"><article><span>01</span><b>Set appetite</b><p>Define limits, concentrations and approval authority.</p></article><article><span>02</span><b>Run decisions</b><p>Automate standard cases and route material exceptions.</p></article><article><span>03</span><b>Monitor exposure</b><p>Use funding and payroll events to update expected loss.</p></article><article><span>04</span><b>Act and learn</b><p>Connect collections outcomes back to policy.</p></article></div></section>
-      <section className="employer-final"><div><p>PayGraph CreditOS</p><h2>Two credit businesses. One control layer.</h2></div><Link href="/demo">Compare the demos <ChevronRight/></Link></section>
-      <footer><Link href="/" className="brand"><span className="brand-mark"><GitBranch size={19}/></span><span>PayGraph <b>CreditOS</b></span></Link><p>Independent prototype • Synthetic decisions • Not an official Deel product or partnership</p><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Request a walkthrough</a></footer>
+      <section className="employer-operating-model"><div><p className="eyebrow">Risk operating model</p><h2>From policy to recovery, one accountable owner.</h2></div><div className="operating-pillars"><article><span>01</span><b>Set appetite</b><p>Define limits, concentrations and approval authority.</p></article><article><span>02</span><b>Run decisions</b><p>Automate standard cases and route material exceptions.</p></article><article><span>03</span><b>Monitor exposure</b><p>Use funding and payroll events to update expected loss.</p></article><article><span>04</span><b>Act and learn</b><p>Connect collections outcomes back to policy.</p></article></div></section>
+      <section className="employer-final"><div><p>Leadership review</p><h2>A working operating model for commercial credit risk.</h2></div><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Review the 90-day plan <ChevronRight/></a></section>
+      <footer><Link href="/" className="brand"><span className="brand-mark"><GitBranch size={19}/></span><span>PayGraph <b>CreditOS</b></span></Link><p>Independent prototype • Synthetic decisions • Not an official Deel product or partnership</p><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Discuss the build path</a></footer>
     </main>
   );
 }
