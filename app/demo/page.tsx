@@ -26,7 +26,6 @@ export default function DemoPage() {
           <strong>Open employer demo <ArrowRight size={16}/></strong>
         </Link>
       </section>
-      <section className="demo-thesis"><b>What this proves</b><p>PayGraph is not a single product mockup. It is a reusable credit operating layer spanning origination, commercial underwriting, portfolio monitoring and governance.</p></section>
     </main>
   );
 }
