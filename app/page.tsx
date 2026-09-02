@@ -293,7 +293,7 @@ export default function Home() {
       </section>
 
       <section className="founder-section" id="founder">
-        <div><p className="eyebrow"><BadgeCheck size={14} /> Operator evidence</p><blockquote>“I built PayGraph to show how workforce data can become a governed credit business—not just another payroll feature.”</blockquote></div>
+        <div><p className="eyebrow"><BadgeCheck size={14} /> Operator evidence</p><blockquote>“PayGraph CreditOS converts workforce data into an active credit engine, enabling enterprise platforms to monetize contractor liquidity with zero balance-sheet liability.”</blockquote></div>
         <div className="founder-card"><span className="founder-initials">NB</span><div><h3>Naveen Budda</h3><p>Co-founder & CPTO, KarmaLife</p></div><ul><li>Built AI-native credit infrastructure supporting 2M+ gig and blue-collar workers</li><li>Led product, engineering and risk systems across employer and NBFC programs</li><li>20+ years across AI/ML, underwriting, portfolio analytics and regulated fintech</li></ul><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">View LinkedIn Profile <ExternalLink size={13}/></a></div>
       </section>
 
