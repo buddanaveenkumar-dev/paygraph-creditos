@@ -293,8 +293,8 @@ export default function Home() {
       </section>
 
       <section className="founder-section" id="founder">
-        <div><p className="eyebrow"><BadgeCheck size={14} /> Operator evidence</p><blockquote>“PayGraph CreditOS converts workforce data into an active credit engine, enabling enterprise platforms to monetize.”</blockquote></div>
-        <div className="founder-card"><span className="founder-initials">NB</span><div><h3>Naveen Budda</h3><p>Co-founder & CPTO, KarmaLife</p></div><ul><li>Built AI-native credit infrastructure supporting 2M+ gig and blue-collar workers</li><li>Led product, engineering and risk systems across employer and NBFC programs</li><li>20+ years across AI/ML, underwriting, portfolio analytics and regulated fintech</li></ul><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">View LinkedIn Profile <ExternalLink size={13}/></a></div>
+        <div><p className="eyebrow"><BadgeCheck size={14} /> Operator evidence</p><blockquote>“I built PayGraph to show how workforce data can become a governed credit business—not just another payroll feature.”</blockquote></div>
+        <div className="founder-card"><span className="founder-initials">NB</span><div><h3>Naveen Budda</h3><p>Co-founder & CPTO, KarmaLife</p></div><ul><li>Built AI-native credit infrastructure supporting 2M+ gig and blue-collar workers</li><li>Led product, engineering and risk systems across employer and NBFC programs</li><li>20+ years across AI/ML, underwriting, portfolio analytics and regulated fintech</li></ul><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">View LinkedIn profile <ExternalLink size={13}/></a></div>
       </section>
 
       <section className="walkthrough-cta"><div><p className="eyebrow"><Radio size={14}/> Build decision</p><h2>Decide whether to build, partner or bring the capability in-house.</h2><p>The prototype is ready for a technical, risk and commercial review.</p></div><a href="https://www.linkedin.com/in/naveenbudda" target="_blank" rel="noreferrer">Discuss the build path <ArrowRight/></a></section>
